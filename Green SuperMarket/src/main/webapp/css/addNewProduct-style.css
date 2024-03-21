@@ -1,0 +1,136 @@
+ body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  background-color: #2ecc71; /* Green color for a supermarket */
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db; /* Blue color for links */
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 5% auto; /* Center the table */
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+}
+
+table th, table td {
+  padding: 1em;
+  text-align: center;
+}
+
+table th {
+  font-size: .9em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  table td {
+    display: block;
+    text-align: center;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+/* Header CSS */
+/* Add your custom header styles here */
+
+/* Footer CSS */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1; /* Light gray background for the footer */
+  color: #333; /* Dark text color */
+  text-align: center;
+  padding: 1em;
+}
+
+/* Form Styles */
+.input-style, .button {
+  width: 90%;
+  margin: 1em 5%;
+  padding: 1em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.input-style:focus, .button:focus {
+  outline: 4px solid #3498db; /* Blue outline on focus */
+  background-color: #ecf0f1; /* Light gray background on focus */
+}
+
+.button {
+  background-color: #3498db;
+  color: #fff;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  color: #fff;
+}
+
+/* Additional Styles */
+hr {
+  width: 90%;
+}
+
+h3 {
+  text-align: center;
+  color: #fff;
+}
+
+.alert {
+  color: yellow;
+}
+
+.profile-style {
+  border-style: dotted;
+}
+
+.left-div, .right-div {
+  width: 50%;
+  display: inline-block;
+}
+ 

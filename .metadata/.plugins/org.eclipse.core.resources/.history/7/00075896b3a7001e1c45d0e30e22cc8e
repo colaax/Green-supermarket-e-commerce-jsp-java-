@@ -1,0 +1,45 @@
+<%@ page import="Project.connectionprovider" %>
+<%@ page import="java.sql.*" %>
+<%
+String email = session.getAttribute("email").toString();
+String securityQuestion = request.getParameter("securityQuestion");
+String newAnswer = request.getParameter("newanswer");
+String password = request.getParameter("password");
+int check = 0;
+
+try {
+    Connection con = connectionprovider.getCon();
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery("select * from users where email='" + email + "' and password='" + password + "'");
+
+    if (rs.next()) {
+        // The user with the provided email and password exists
+        check = 1;
+        rs.close(); // Close the ResultSet before updating
+
+        // Update the security question and answer
+        PreparedStatement updateStatement = con.prepareStatement("update users set securityQuestion=?, answer=? where email=?");
+        updateStatement.setString(1, securityQuestion);
+        updateStatement.setString(2, newAnswer);
+        updateStatement.setString(3, email);
+
+        int rowsUpdated = updateStatement.executeUpdate();
+        updateStatement.close(); // Close the PreparedStatement
+
+        if (rowsUpdated > 0) {
+            // Rows were updated successfully
+            response.sendRedirect("changeSecurityQuestion.jsp?msg=done");
+        } else {
+            // No rows were updated, something went wrong
+            response.sendRedirect("changeSecurityQuestion.jsp?msg=error");
+        }
+    } else {
+        // The user with the provided email and password does not exist
+        response.sendRedirect("changeSecurityQuestion.jsp?msg=wrong");
+    }
+} catch (Exception e) {
+    // Handle exceptions, log or display an error message
+    e.printStackTrace();
+    response.sendRedirect("changeSecurityQuestion.jsp?msg=error");
+}
+%>

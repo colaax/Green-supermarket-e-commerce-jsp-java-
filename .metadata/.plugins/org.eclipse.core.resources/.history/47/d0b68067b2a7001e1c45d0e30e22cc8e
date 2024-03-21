@@ -1,0 +1,20 @@
+<%@ page import="Project.connectionprovider"%>
+<%@ page import="java.sql.*" %>
+<%
+String email=session.getAttribute("email").toString();
+String securityQuestion=request.getParameter("securityQuestion");
+String newAnswer=request.getParameter("newanswer");
+String password=request.getParameter("password");
+int check=0;
+try
+{
+	 Connection con = connectionprovider.getCon();
+     Statement st = con.createStatement();
+     ResultSet rs = st.executeQuery("select *from users where email='"+email+"' and password='"+password+"'");
+     
+}
+catch(Exception e)
+{
+	
+}
+%>

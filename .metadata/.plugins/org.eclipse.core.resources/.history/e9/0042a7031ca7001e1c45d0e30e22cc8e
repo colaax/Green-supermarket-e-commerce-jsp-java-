@@ -1,0 +1,5 @@
+<%@ page import="Project.connectionprovider"%>
+<%@ page import="java.sql.*" %>
+<%
+String email=session.getAttribute("email").toString();
+%>

@@ -1,0 +1,47 @@
+<%@ page import="Project.connectionprovider" %>
+<%@ page import="java.sql.*" %>
+<%
+String email = session.getAttribute("email").toString().trim();
+String securityQuestion = request.getParameter("securityQuestion");
+String newAnswer = request.getParameter("newanswer");
+String password = request.getParameter("password");
+
+try {
+    Connection con = connectionprovider.getCon();
+
+    // Check if the password is correct
+    PreparedStatement checkPasswordPst = con.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
+    checkPasswordPst.setString(1, email);
+    checkPasswordPst.setString(2, password);
+    ResultSet passwordRs = checkPasswordPst.executeQuery();
+
+    if (passwordRs.next()) {
+        // Password is correct, proceed with the update
+        passwordRs.close();
+        checkPasswordPst.close();
+
+        // Update the security question and answer
+        PreparedStatement updatePst = con.prepareStatement("UPDATE users SET securityQuestion=?, answer=? WHERE email=?");
+        updatePst.setString(1, securityQuestion);
+        updatePst.setString(2, newAnswer);
+        updatePst.setString(3, email);
+
+        int rowsUpdated = updatePst.executeUpdate();
+        updatePst.close();
+
+        if (rowsUpdated > 0) {
+            response.sendRedirect("changeSecurityQuestion.jsp?msg=done");
+        } else {
+            response.sendRedirect("changeSecurityQuestion.jsp?msg=error");
+        }
+    } else {
+        // Password is incorrect
+        passwordRs.close();
+        checkPasswordPst.close();
+        response.sendRedirect("changeSecurityQuestion.jsp?msg=wrong");
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+    response.sendRedirect("changeSecurityQuestion.jsp?msg=error");
+}
+%>

@@ -1,0 +1,103 @@
+body {
+  background-color: #3CBC8D; /* Updated background color */
+  font: 1em 'Open Sans', sans-serif;
+  color: #fff; /* Set text color to white */
+}
+
+#container {
+  width: 80%;
+  margin: 25px auto;
+  margin-top: 50px;
+}
+
+.whysign,
+.whysignLogin,
+.whyforgotPassword,
+.signup {
+  float: left;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.whysign,
+.whysignLogin {
+  height: 347px; /* Adjusted height for consistency */
+}
+
+[type=text],
+[type=email],
+[type=number],
+[type=password],
+select,
+option {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  height: 45px;
+  line-height: 45px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: #333; /* Set text color */
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+[type=submit] {
+  width: 100%;
+  border: 0;
+  background-color: #3CBC8D; /* Updated button color */
+  border-radius: 5px;
+  height: 50px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+[type='text']:focus,
+[type=email]:focus,
+[type=number]:focus,
+[type=password]:focus,
+select:focus,
+option:focus {
+  outline: none;
+  border-color: #3CBC8D; /* Updated focus color */
+}
+
+h1 {
+  color: #3CBC8D; /* Updated heading color */
+  font-weight: 700;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #ccc; /* Light text color */
+  font-size: 1.2em;
+  margin: 30px 0;
+}
+
+span {
+  font-size: .75em;
+  background-color: #3CBC8D;
+  padding: 2px 5px;
+  color: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+span:hover {
+  background-color: #007B5E; /* Darker green on hover */
+}
+
+p:nth-of-type(2) {
+  font-size: 1em;
+}
